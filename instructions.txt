@@ -1,0 +1,34 @@
+Um PWA multitenancy voltado para area de membros
+clientes etram na plataforma com usuario e senha para acessar sua area de membros exclusiva da consultoria PLL (Programa Lucro e Liberdade)
+banco de dados supabase com Role Security por tentant
+deploy em vercel
+dominio será lidera.adventurelabs.com.br/clientId/ onde lidera é subdominio (nome da empresa dona do multitenant) adventurelabs é o desenvolvedor e onde fica o dominio do app e /clientId é o Id do cliente final que irá usar a ferramenta de area de membros
+
+1.login com acesso somente ao permitido para aquele nivel de conta ou Clientid
+2.login de administrador e area de administrador para poder incluir/editar/excluir conteudos e dar acessos especificos para contas de clientes - essa area precisa ter um front interessante
+
+o que deve conter no app para usuario final:
+
+1.pagina de login
+2.pagina de boas vindas com video e atalhos
+3.pagina de perfil e preferencias do usuario (foto, logo da organizacao, tema, notificacoes)
+4.pagina do conteudo(aqui precisa ter uma grade de titulos estilo netflix, com capa e nome) para o cliente entrar no conteudo. Dentro da subpagina terá o video ou texto daquela aula e mais  campo de anotacoes do professor e anotacoes do aluno, um checkbox de conclusao da aula)
+5.pagina de conteudos adquiridos (aqui ele nao acessa um dos conteudos, mas uma lista de quais conteudos ele tem direito ou comprou) mostrando 
+
+
+como funcionará a adminsitracao para o usuario dono da ferramenta:
+
+1.Adventure Labs dá acesso completo de admin para o Lidera (Lidera terá acesso tanto para cadastrar novos clientes quanto para incluir/excluir/editar conteudos)
+2.Lidera será o responsavel por incluir os dados dentro da plataforma
+3.Usuario final só verá aquilo que o Lidera atribuiu
+
+---
+
+o banco de dados e a autenticacao será no supabase no projeto pnqpzutnanotzbefxxid da organizacao ppfquxvhtbzwcohipzif
+
+---
+
+a intenção geral é criar um ambiente de bom uso e performance tanto para o adminsitrador do conteudo quanto apra o usaurio final que está contratando a consultoria.
+o ambiente pode ser parecido com um notion onde é facil a inclusão de dados nas paginas e o sistema de conectar dados/linkar dados - sistema de paginas e subpaginas (wiki)
+porem deve ter a parte que precisa colocar um video do youtube de uma aula gravada por exemplo.. estilo hotmart/eduzz
+
