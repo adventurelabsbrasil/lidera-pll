@@ -7,7 +7,7 @@ const THEME_KEY = "pll-theme";
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const stored = localStorage.getItem(THEME_KEY) as "light" | "dark" | "system" | null;
-    const theme = stored ?? "system";
+    const theme = stored ?? "light";
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");

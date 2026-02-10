@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#fafafa",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
       <body>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem("pll-theme");var r=document.documentElement;if(t==="dark")r.classList.add("dark");else if(t==="light")r.classList.remove("dark");else if(window.matchMedia("(prefers-color-scheme: dark)").matches)r.classList.add("dark");else r.classList.remove("dark");})();`,
+            __html: `(function(){var t=localStorage.getItem("pll-theme");var r=document.documentElement;if(t==="dark")r.classList.add("dark");else if(t==="light")r.classList.remove("dark");else r.classList.remove("dark");})();`,
           }}
         />
         <ThemeProvider>

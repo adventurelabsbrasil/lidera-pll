@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Programa Lucro e Liberdade - Área de membros",
     start_url: "/",
     display: "standalone",
-    background_color: "#0a0a0a",
-    theme_color: "#0a0a0a",
+    background_color: "#fafafa",
+    theme_color: "#fafafa",
     icons: [
       { src: "/favicon.ico", sizes: "48x48", type: "image/x-icon", purpose: "any" },
     ],

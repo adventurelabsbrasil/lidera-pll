@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getClientBySlug } from "@/lib/client-resolver";
 import Link from "next/link";
 import { SignOutButton } from "@/components/sign-out-button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const dynamic = "force-dynamic";
 
@@ -52,15 +53,19 @@ export default async function ClientLayout({
             <Link href={`/${clientId}/perfil`} className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white">
               Perfil
             </Link>
+            <ThemeToggle />
             <SignOutButton />
           </nav>
         ) : (
-          <Link
-            href={`/${clientId}/login`}
-            className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700"
-          >
-            Entrar
-          </Link>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Link
+              href={`/${clientId}/login`}
+              className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700"
+            >
+              Entrar
+            </Link>
+          </div>
         )}
       </header>
       <main className="p-4 md:p-6 bg-zinc-50 dark:bg-zinc-950">{children}</main>
