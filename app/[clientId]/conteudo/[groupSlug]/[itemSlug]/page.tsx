@@ -17,7 +17,8 @@ export default async function AulaPage({
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) redirect(`/${clientId}/login`);
+  // Modo teste: sem bloqueio de login
+  // if (!user) redirect(`/${clientId}/login`);
 
   const { data: group } = await supabase
     .from("content_groups")
@@ -36,12 +37,14 @@ export default async function AulaPage({
 
   if (!item) notFound();
 
-  const { data: progress } = await supabase
-    .from("user_lesson_progress")
-    .select("completed, student_notes")
-    .eq("user_id", user.id)
-    .eq("content_item_id", item.id)
-    .single();
+  const { data: progress } = user
+    ? await supabase
+        .from("user_lesson_progress")
+        .select("completed, student_notes")
+        .eq("user_id", user.id)
+        .eq("content_item_id", item.id)
+        .single()
+    : { data: null };
 
   return (
     <div className="max-w-4xl mx-auto">

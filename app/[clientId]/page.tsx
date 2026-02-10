@@ -1,5 +1,4 @@
 import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
 import { getClientBySlug } from "@/lib/client-resolver";
 import Link from "next/link";
 
@@ -17,9 +16,8 @@ export default async function ClientWelcomePage({
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect(`/${clientId}/login`);
-  }
+  // Modo teste: sem bloqueio de login; depois reativar redirect quando configurar acessos
+  // if (!user) redirect(`/${clientId}/login`);
 
   return (
     <div className="max-w-3xl mx-auto">

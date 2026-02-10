@@ -19,17 +19,19 @@ export default async function ConteudoPage({
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) redirect(`/${clientId}/login`);
+  // Modo teste: sem bloqueio de login
+  // if (!user) redirect(`/${clientId}/login`);
 
   let groups: { id: string; title: string; slug: string; cover_url: string | null }[] = [];
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("client_id")
-    .eq("id", user.id)
-    .single();
-
-  const effectiveClientId = profile?.client_id ?? client.id;
+  let effectiveClientId = client.id;
+  if (user) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("client_id")
+      .eq("id", user.id)
+      .single();
+    effectiveClientId = profile?.client_id ?? client.id;
+  }
 
   const { data: access } = await supabase
     .from("client_content_access")

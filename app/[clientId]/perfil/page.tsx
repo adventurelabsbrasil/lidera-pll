@@ -16,6 +16,7 @@ export default async function PerfilPage({
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  // Modo teste: perfil exige login; depois reativar redirect quando configurar acessos
   if (!user) redirect(`/${clientId}/login`);
 
   const { data: profile } = await supabase

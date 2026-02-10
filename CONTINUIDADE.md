@@ -8,12 +8,18 @@
 - Deploy em produção: **https://lidera-pll-gamma.vercel.app**
 - Next.js atualizado para versão segura (15.2.8).
 
+**Modo teste (login desativado):** Para testar o app sem login, foram feitas:
+- RLS: políticas de SELECT público em `content_groups`, `content_items`, `client_content_access` (migration `20250209110000_rls_test_public_read.sql`).
+- Páginas da área do membro (`/[clientId]`, `/conteudo`, `/conteudo/.../aula`, `/conteudos-adquiridos`) não redirecionam mais para login; perfil continua exigindo login.
+- **Quando for configurar acessos:** reverter essas políticas (ou criar migration que as remova), descomentar os `redirect` nas páginas acima e fazer novo deploy.
+
 **Próximos passos (quando voltar):**
 1. Confirmar variáveis no lidera-pll (Vercel): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_APP_URL`.
-2. Rodar migrations no Supabase (projeto `pnqpzutnanotzbefxxid`) — `npx supabase db push` ou SQL no editor.
-3. No Supabase, marcar um perfil como `role = super_admin`.
+2. ~~Rodar migrations no Supabase~~ — **feito** (`supabase db push` já aplicado).
+3. No Supabase, marcar um perfil como `role = super_admin` — ver **[PRIMEIRO-USO.md](PRIMEIRO-USO.md)**.
 4. Acessar https://lidera-pll-gamma.vercel.app → login → /super-admin → criar tenant e cliente.
 5. (Opcional) Domínio lidera.adventurelabs.com.br e conteúdo em /admin.
+6. **Reativar bloqueios de login** (ver "Modo teste" acima).
 
 **Pasta do projeto:** `"/Users/ribasrodrigo91/Documents/GitHub/Adventure Labs/Sem Título"`
 
@@ -36,7 +42,7 @@ Projeto já vinculado ao **lidera-pll** na Vercel. Seguir na ordem:
 
    Marque para **Production**, **Preview** e **Development**.
 
-3. Salve. Para o próximo deploy passar a usar as variáveis, faça um **Redeploy** (Deployments → ⋮ → Redeploy) ou siga o passo 2.
+3. Salve. **Importante:** variáveis só valem após um **novo deploy**. Faça **Redeploy** (Deployments → ⋮ → Redeploy) ou `npx vercel --prod`. Se ver Error 500 após adicionar variáveis, é quase sempre porque o deploy anterior não tinha as variáveis — redeploy resolve.
 
 ---
 
@@ -104,8 +110,8 @@ Depois atualize `NEXT_PUBLIC_APP_URL` para `https://lidera.adventurelabs.com.br`
 
 - [ ] Variáveis no lidera-pll (Vercel)
 - [x] Deploy (`npx vercel --prod` ou Redeploy) — **feito**
-- [ ] Migrations no Supabase (`db push` ou SQL no editor)
-- [ ] Um perfil com `role = super_admin`
+- [x] Migrations no Supabase — **feito** (`db push` aplicado)
+- [ ] Um perfil com `role = super_admin` (ver PRIMEIRO-USO.md)
 - [ ] Tenant e cliente criados em /super-admin
 - [ ] (Opcional) Perfil tenant_admin e conteúdo + acesso em /admin
 - [ ] (Opcional) Domínio lidera.adventurelabs.com.br

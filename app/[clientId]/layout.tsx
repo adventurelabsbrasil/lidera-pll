@@ -3,6 +3,8 @@ import { getClientBySlug } from "@/lib/client-resolver";
 import Link from "next/link";
 import { SignOutButton } from "@/components/sign-out-button";
 
+export const dynamic = "force-dynamic";
+
 export default async function ClientLayout({
   children,
   params,

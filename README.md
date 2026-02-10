@@ -2,7 +2,7 @@
 
 PWA multitenancy para área de membros do **Programa Lucro e Liberdade (PLL)**.
 
-**Próximos passos (projeto já vinculado ao lidera-pll na Vercel):** ver **[CONTINUIDADE.md](CONTINUIDADE.md)** — variáveis, deploy, migrations e primeiro uso.
+**Próximos passos:** [CONTINUIDADE.md](CONTINUIDADE.md) (checklist) · **[PRIMEIRO-USO.md](PRIMEIRO-USO.md)** (super_admin, tenant e cliente).
 
 ## Stack
 

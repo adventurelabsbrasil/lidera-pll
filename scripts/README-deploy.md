@@ -31,6 +31,16 @@ Ou use `npx` sem instalar globalmente (ex.: `npx supabase ...`, `npx vercel ...`
    supabase db push
    ```
 
+4. **Rodar seed (usuários por nível) via CLI**  
+   O Supabase CLI não tem comando para executar um `.sql` arbitrário no remoto. Use **psql** com a connection string do projeto:
+   ```bash
+   # Obter a URI: Dashboard → Settings → Database → Connection string (URI). Substitua [YOUR-PASSWORD] pela senha do banco.
+   export DATABASE_URL="postgresql://postgres.pnqpzutnanotzbefxxid:[SENHA]@aws-0-us-east-1.pooler.supabase.com:6543/postgres"
+   chmod +x scripts/run-seed.sh
+   ./scripts/run-seed.sh
+   ```
+   Ou executar outro arquivo: `./scripts/run-seed.sh "$DATABASE_URL" supabase/seed_apenas_niveis_por_email.sql`
+
 ---
 
 ## Vercel
